@@ -1,11 +1,8 @@
-import org.openqa.selenium.WebDriver;
+package page;
 
-public class FacebookPage {
-    private DSL dsl;
+import core.BasePage;
 
-    public FacebookPage(WebDriver driver) {
-        dsl = new DSL(driver);
-    }
+public class FacebookPage extends BasePage {
 
     public void setNome(String nome) {
         dsl.escrever("firstname",nome);
@@ -39,17 +36,16 @@ public class FacebookPage {
         dsl.selecionarCombo("year", ano);
     }
 
-
     public void setSexoFeminino(String feminino) {
-        dsl.clicarRadio("/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[7]/span/span[1]/input");
+        dsl.clicarRadio("//*[. = 'Feminino']/.//input");
     }
 
     public void setSexoMasculino(String masculino) {
-        dsl.clicarRadio("/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[7]/span/span[2]/input");
+        dsl.clicarRadio("//*[. = 'Masculino']/.//input");
     }
 
     public void setSexoPersonalizado(String personalizado) {
-        dsl.clicarRadio("/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[7]/span/span[3]/input");
+        dsl.clicarRadio("//input[@name='sex' and @value='-1']");
     }
 
     public void setGeneroFeminino (String value){
@@ -102,15 +98,15 @@ public class FacebookPage {
     }
 
     public boolean obterSexoFemininoCadastro() {
-        return dsl.isRadioMarcado("/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[7]/span/span[1]/input");
+        return dsl.isRadioMarcado("//*[. = 'Feminino']/.//input");
     }
 
     public boolean obterSexoMasculinoCadastro() {
-        return dsl.isRadioMarcado("/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[7]/span/span[2]/input");
+        return dsl.isRadioMarcado("//*[. = 'Masculino']/.//input");
     }
 
     public boolean obterSexoPersonalizadoCadastro() {
-        return dsl.isRadioMarcado("/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[7]/span/span[3]/input");
+        return dsl.isRadioMarcado("//input[@name='sex' and @value='-1']");
     }
 
     public String obterGeneroPronomeCadastro() {

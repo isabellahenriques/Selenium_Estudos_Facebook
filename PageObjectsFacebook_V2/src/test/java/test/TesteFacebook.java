@@ -1,39 +1,31 @@
-import org.junit.After;
+package test;
+
+import core.BaseTest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import page.FacebookPage;
 
-public class TesteFacebook {
-    WebDriver driver;
-    private DSL dsl;
+import static core.DriverFactory.getDriver;
+
+
+public class TesteFacebook extends BaseTest {
     private FacebookPage page;
 
     @Before
     public void preCondicao() {
-        System.setProperty("webdriver.chrome.driver","C:\\Users\\isabellaSzrajbman\\Documents\\MeusProjetos\\Base2_Modulo2\\PageObjectsFacebook_V2\\drivers\\chromedriver97\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.navigate().to("https://www.facebook.com/");
-        driver.manage().window().maximize();
+        getDriver().navigate().to("https://www.facebook.com/");
+        page = new FacebookPage();
 
-        dsl = new DSL(driver);
-        page = new FacebookPage(driver);
-
-        WebElement btNovaConta = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/form/div[5]/a"));
+        WebElement btNovaConta = getDriver().findElement(By.xpath("//a[.='Criar nova conta']"));
         btNovaConta.click();
 
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(getDriver(), 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("firstname")));
-    }
-
-    @After
-    public void posCondicao() {
-        driver.quit();
     }
 
     @Test
