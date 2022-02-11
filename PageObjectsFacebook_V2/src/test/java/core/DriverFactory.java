@@ -11,7 +11,7 @@ public class DriverFactory {
 
     public static WebDriver getDriver(){
         if(driver == null) {
-            System.setProperty("webdriver.chrome.driver", "C:\\Users\\isabellaSzrajbman\\Documents\\MeusProjetos\\Base2_Modulo2\\PageObjectsFacebook_V2\\drivers\\chromedriver97\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "C:\\Users\\isabellaSzrajbman\\Documents\\MeusProjetosGitHub\\Selenium_Estudos\\PageObjectsFacebook_V2\\drivers\\chromedriver97\\chromedriver.exe");
             driver = new ChromeDriver();
             driver.manage().window().maximize();
         }
