@@ -2,31 +2,12 @@ package test;
 
 import core.BaseTest;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import page.FacebookPage;
 
-import static core.DriverFactory.getDriver;
-
-
 public class TesteFacebook extends BaseTest {
-    private FacebookPage page;
 
-    @Before
-    public void preCondicao() {
-        getDriver().navigate().to("https://www.facebook.com/");
-        page = new FacebookPage();
-
-        WebElement btNovaConta = getDriver().findElement(By.xpath("//a[.='Criar nova conta']"));
-        btNovaConta.click();
-
-        WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("firstname")));
-    }
+    FacebookPage page = new FacebookPage();
 
     @Test
     public void cadastroFeminino(){
